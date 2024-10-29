@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const generateToken = (id) => { //generates jwt token
-  return jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn: "30d" });
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
 };
 
 exports.register = async (req, res) => {
@@ -15,28 +15,34 @@ exports.register = async (req, res) => {
     }
   
     try {
-      const emailExist = await User.findOne({ email });
+      const emailExist = await User.findOne({ email: req.body.email });
       if (emailExist) return res.status(409).json({ message: "Email already exists" });
   
-      const usernameExist = await User.findOne({ username });
+      const usernameExist = await User.findOne({ username: req.body.username });
       if (usernameExist) return res.status(409).json({ message: "Username already exists" });
 
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
   
       const user = await User.create({
-        username,
-        email,
+        username: req.body.username,
+        email: req.body.email,
         password: hashedPassword,
       });
   
-      res.status(201).json({
-        message: "User has been created",
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        token: generateToken(user._id),
-      });
+      if (user) {
+        res.status(201).json({ 
+          message: "User has been created", 
+          _id: user._id,
+          username: user.username,
+          email: user.email,
+          token: generateToken(user._id),
+        });
+      }
+      else {
+        res.status(400).json({ message: "Invalid user data" });
+      }
+
     } catch (err) {
       console.error("Registration error:", err);
       res.status(500).json({ message: "Server error" });
@@ -92,7 +98,7 @@ exports.logout = async (req, res) => {
 
 exports.getUserProfile = async (req, res) => {
     try {
-      const user = await User.findById(req.user.id).select("-password"); //exclude pswd
+      const user = await User.findById(req.user.id).select("-password"); //exclude pswd since it is hashed and nonsensical to user
       if (!user) return res.status(404).json({ message: "User not found" });
   
       res.status(200).json(user);

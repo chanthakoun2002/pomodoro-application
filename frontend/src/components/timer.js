@@ -6,9 +6,9 @@ const Timer = () => {
 
   //handles mode changes
   const handleModeChange = (mode) => {
-    if(mode === 'Pomodoro') setTime(1500); //25 min
-    if(mode === 'Short Break') setTime(300); //5 min
-    if(mode === 'Long Break') setTime(900); //15 min
+    if(mode === 'pomodoro') setTime(1500); //25 min
+    if(mode === 'shortBreak') setTime(300); //5 min
+    if(mode === 'longBreak') setTime(900); //15 min
     setIsActive(false);
   };
 
@@ -27,9 +27,9 @@ const Timer = () => {
   return (
     <div className="timer-component">
         <div className='timer-component-time-selection'>
-            <button onClick={() => handleModeChange('Pomodoro')}>Pomodoro</button>
-            <button onClick={() => handleModeChange('Short Break')}>Short Break</button>
-            <button onClick={() => handleModeChange('Long Break')}>Long Break</button>
+            <button onClick={() => handleModeChange('pomodoro')}>Pomodoro</button>
+            <button onClick={() => handleModeChange('shortBreak')}>Short Break</button>
+            <button onClick={() => handleModeChange('longBreak')}>Long Break</button>
         </div>
         
       <h2>timer</h2>

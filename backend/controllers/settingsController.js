@@ -16,7 +16,7 @@ exports.getUserSettings = async (req, res) => {
     }
   };
 
-//create/update user settings
+//create and or update preferred user settings
 exports.updateUserSettings = async (req, res) => {
     try {
       const updatedSettings = await Settings.findOneAndUpdate(

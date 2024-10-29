@@ -5,13 +5,13 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const rateLimit = require("express-rate-limit");
 const app = express();
-
+dotenv.config();
 const limit = rateLimit({
     windowMs:  10 * 60 * 1000,
     max: 100,
 });
 
-dotenv.config();
+
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev')); 
