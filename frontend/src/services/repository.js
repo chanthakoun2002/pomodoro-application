@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/pomodoro";
+const API_BASE_URL="http://localhost:5000/pomodoro";
 
 
 // The code here provides the service layer/functionality to connect to the api backend
@@ -74,4 +74,20 @@ function logoutUser() {
     });
 }
 
-export {loginUser, registerUser, logoutUser};
+function getSettings() {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/settings`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error fetching settings items:", error);
+        throw error;
+    });
+}
+
+export {loginUser, registerUser, logoutUser, getSettings};

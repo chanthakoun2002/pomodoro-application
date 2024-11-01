@@ -99,19 +99,87 @@ main {
   overflow: hidden;
   padding: 10px;
 }
-
+.overlay h1{
+  text-decoration: underline;
+}
 .overlay-container {
-  background: white;
-  height: 80vh;
-  border-radius: 10px;
-  max-width: 600px;
-  width: 90%; 
-  min-height: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  height: 75vh;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+  position: relative;
 }
 
+.account-overlay-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+.close-btn{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: rgb(163, 163, 163);
+  border-color: #ba4949;
+  font-size: 15px;
+  color: #ba4949;
+  font-weight:900;
+}
+
+.close-btn:hover {
+  background-color: #ccc;
+}
+
+
+ /* account overlay */
+.account-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+  margin-left: 20px;
+
+}
+
+.account-form-container input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80%;
+
+  margin-bottom: 10px;
+  
+}
+
+.account-form-container button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  width: 30%;
+  margin: auto;
+}
+
+.account-form-container button:hover {
+  background-color: #45a049;
+}
+
+.toggle-login {
+  margin-top: 25px;
+  color: rgba(59, 59, 230, 0.918);
+  cursor: pointer;
+}
+.toggle-login:hover {
+  text-decoration: underline;
+}

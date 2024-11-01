@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import AccountOverlay from './accountOverlay';
+import SettingsOverlay from './settingsOverlay';
+import StatisticsOverlay from './statisticsOverlay';
+// navbar will allow user to open overlays for the user and login functionalities 
 
 const Navbar = () => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
-  const handleOpenOverlay = () => setIsOverlayOpen(true);
+  const handleOpenOverlay = (overlay) => setIsOverlayOpen(overlay);
   const handleCloseOverlay = () => setIsOverlayOpen(false);
 
   return (
@@ -14,17 +17,15 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-buttons">
-        <button onClick={() => alert('Statistic overlay coming soon')}>
-          Statistic
-        </button>
-        <button onClick={() => alert('Settings overlay coming soon')}>
-          Settings
-        </button>
+        <button onClick={() => handleOpenOverlay('statistics')}>Statistics</button>
+        <button onClick={() => handleOpenOverlay('settings')}>Settings</button>
+        <button onClick={() => handleOpenOverlay('account')}>Account</button>
 
-        <button onClick={handleOpenOverlay}>Account</button>
       </div>
 
-      {isOverlayOpen && <AccountOverlay onClose={handleCloseOverlay} />}
+      {isOverlayOpen === 'account' && <AccountOverlay onClose={handleCloseOverlay} />}
+      {isOverlayOpen === 'settings' && <SettingsOverlay onClose={handleCloseOverlay} />}
+      {isOverlayOpen === 'statistics' && <StatisticsOverlay onClose={handleCloseOverlay} />}
     </div>
   );
 };
