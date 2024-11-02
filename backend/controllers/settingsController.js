@@ -1,4 +1,4 @@
-const settings = require('../models/settings');
+const Settings = require('../models/settings');
 
 //get user settings
 exports.getUserSettings = async (req, res) => {
@@ -22,11 +22,12 @@ exports.updateUserSettings = async (req, res) => {
       const updatedSettings = await Settings.findOneAndUpdate(
         { userId: req.user.id },
         req.body,
-        { new: true, upsert: true }
+        { new: true, upsert: true, runValidators: true }
       );
   
       res.status(200).json(updatedSettings);
     } catch (error) {
+      console.error('Error updating settings:', error);
       res.status(500).json({ message: "Server error" });
     }
   };

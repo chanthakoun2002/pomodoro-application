@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const sessionController = require("../controllers/sessionController");
+const settingsController = require("../controllers/settingsController");
 const authentication = require("../middleware/authMiddleware");
 
-router.post("/", authentication, sessionController.createSession);
-router.get("/", authentication, sessionController.getUserSessions);
+router.get("/", authentication, settingsController.getUserSettings);
+router.put("/", authentication, settingsController.updateUserSettings);
 
 module.exports = router;
