@@ -4,7 +4,7 @@ import SettingsOverlay from './settingsOverlay';
 import StatisticsOverlay from './statisticsOverlay';
 // navbar will allow user to open overlays for the user and login functionalities 
 
-const Navbar = () => {
+const Navbar = ({openSettings}) => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   const handleOpenOverlay = (overlay) => setIsOverlayOpen(overlay);
@@ -18,7 +18,7 @@ const Navbar = () => {
 
       <div className="navbar-buttons">
         <button onClick={() => handleOpenOverlay('statistics')}>Statistics</button>
-        <button onClick={() => handleOpenOverlay('settings')}>Settings</button>
+        <button onClick={openSettings}>Settings</button>
         <button onClick={() => handleOpenOverlay('account')}>Account</button>
 
       </div>

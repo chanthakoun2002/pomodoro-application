@@ -85,9 +85,24 @@ function getSettings() {
     })
     .then(handleResponse)
     .catch((error) => {
-        console.error("Error fetching settings items:", error);
+        console.error("Error fetching settings:", error);
+        throw error;
+    });
+}
+function saveSettings() {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/settings`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error fetching settings:", error);
         throw error;
     });
 }
 
-export {loginUser, registerUser, logoutUser, getSettings};
+export {loginUser, registerUser, logoutUser, getSettings, saveSettings};

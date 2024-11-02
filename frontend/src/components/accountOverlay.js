@@ -22,14 +22,15 @@ const AccountOverlay = ({ onClose }) => {
         
     },[]);
 
-    const handleSubmit = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log("hello from login submit");//testing
+        console.log("hello from login");//testing
         try {
             if(isLogin) {
-                const data = loginUser({email, password});
+                const data = await loginUser({email, password});
+                console.log("login response data:", data); //test
                 sessionStorage.setItem('user', JSON.stringify(data));
-                setPassword(data);
+                setUserData(data);
                 setIsLoggedIn(true);
                 setError('Login Successful')
             } else {
@@ -66,14 +67,14 @@ const AccountOverlay = ({ onClose }) => {
 
             {isLoggedIn ? (
               <div className="user-account-section">
-                <h2>Welcome, {userData.username}!</h2>
-                <p>Email: {userData.email}</p>
+                <h2>Welcome, {userData?.username}!</h2>
+                <p>Email: {userData?.email}</p>
                 <button onClick={handleLogout}>Logout</button>
               </div>
               ) : ( 
               <div>
                 <h2>{isLogin ? 'Login' : 'Register'}</h2>
-                <form onSubmit={handleSubmit} className="account-form-container">
+                <form onSubmit={handleLogin} className="account-form-container">
                   {!isLogin && (<input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required/>)}
                   <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                   <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>

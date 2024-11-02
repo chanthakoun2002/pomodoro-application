@@ -1,23 +1,15 @@
-import React, { useState, useEffect} from 'react';
-import {getSettings} from '../services/repository'
+import React, { useState } from 'react';
 
-const DEFAULT_SETTINGS = {
-    pomodoroDuration: 1500,  // 25 mins
-    shortBreakDuration: 300,  // 5 min
-    longBreakDuration: 900,   // 15 min
-    sessionBeforeLongBreak: 4,
-    sound: true
+const SettingsOverlay = ({ settings, onSave, onClose }) => {
+  const [localSettings, setLocalSettings] = useState(settings);
+
+  const handleChange = (field, value) => {
+    setLocalSettings((prev) => ({ ...prev, [field]: value })); //when setting changes it updates
   };
 
-
-const SettingsOverlay = ({ onClose }) => {
-    const [settings, setSettings] = useState(DEFAULT_SETTINGS)
-
-    const handleChange = ({}) => {}
-
-    const handleSave = ({}) => {}
-
-
+  const handleSave = () => {
+    onSave(localSettings);
+  };
 
     return (
         <div className='overlay'> 
@@ -28,16 +20,16 @@ const SettingsOverlay = ({ onClose }) => {
 
                 <div className='timer-settings'>
                     <h2>timer</h2>
-                    <label>pomodoro<input type="number"value={settings.pomodoroDuration} /></label>
-                    <label>break<input type="number" value={settings.shortBreakDuration}/></label>
-                    <label>longbreak<input type="number" value={settings.sessionBeforeLongBreak}/></label>
+                    <label>pomodoro<input type="number"value={localSettings.workDuration} onChange={(e) => handleChange('workDuration', Number(e.target.value))}/></label>
+                    <label>break<input type="number" value={localSettings.shortBreakDuration} onChange={(e) => handleChange('shortBreakDuration', Number(e.target.value))}/></label>
+                    <label>Long break<input type="number" value={localSettings.longBreakDuration}onChange={(e) => handleChange('longBreakDuration', Number(e.target.value))}/></label>
                 </div>
                 <div className='other-settings'>
-                    <label>Session Before Long Break<input type="number" value={settings.longBreakDuration}/></label>
-                    <label>Alert Sound on/off<input type="checkbox" class="onoffswitch-checkbox" checked={settings.sound} id="inline"/></label>
+                    <label>Session Before Long Break<input type="number" value={localSettings.sessionBeforeLongBreak}onChange={(e) => handleChange('sessionBeforeLongBreak', Number(e.target.value))}/></label>
+                    <label>Alert Sound<input type="checkbox" className="alert-checkbox" checked={localSettings.sound} id="inline" onChange={(e) => handleChange('sound', Number(e.target.checked))}/></label>
                      
                 </div>
-                <button>Save</button>
+                <button onClick={handleSave}>Save</button>
 
             </div>
             
