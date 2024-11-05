@@ -1,9 +1,9 @@
 import React from 'react';
 
 const information = () => (
-    <div className='information-component'>
-        <h1>information</h1>
-    </div>
+    <section className='information-component'>
+        <h1>Information</h1>
+    </section>
 
 
 );

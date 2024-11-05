@@ -80,6 +80,7 @@ function getSettings() {
     return fetch(`${API_BASE_URL}/settings`, {
         method: "GET",
         headers: {
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
         }
     })
@@ -89,14 +90,16 @@ function getSettings() {
         throw error;
     });
 }
-function saveSettings() {
+function saveSettings(settings) {
     const token = sessionStorage.getItem('authToken');
 
     return fetch(`${API_BASE_URL}/settings`, {
         method: "PUT",
         headers: {
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
-        }
+        },
+        body: JSON.stringify(settings)
     })
     .then(handleResponse)
     .catch((error) => {
@@ -105,4 +108,56 @@ function saveSettings() {
     });
 }
 
-export {loginUser, registerUser, logoutUser, getSettings, saveSettings};
+function createTask(task) {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/tasks`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(task)
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error saving task:", error);
+        throw error;
+    });
+}
+
+function getTasks() {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/tasks`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error fetching tasks:", error);
+        throw error;
+    });
+}
+
+function deleteTask(taskId) {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/tasks/${taskId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error deleting task:", error);
+        throw error;
+    });
+}
+
+export {loginUser, registerUser, logoutUser, getSettings, saveSettings, createTask, getTasks, deleteTask};

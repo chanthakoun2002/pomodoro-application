@@ -10,19 +10,26 @@ body {
 
 main {
   flex: 1;
-  max-width: 35rem;
+  max-width: 40rem;
   margin: 0 auto;
   box-sizing: border-box;
-  height: 100%;
-  
+}
+button {
+ font-size: 14px;
 }
 
 .navbar-component{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: thick double rgba(0, 0, 0, 0.664);
+  border-bottom: thick double whitesmoke;
+  width: 40rem;
+  margin: auto;
 }
+.navbar-component h3{
+  color: whitesmoke;
+}
+
 .navbar-buttons button{
   opacity: 70%;
   width: 6em;
@@ -31,7 +38,7 @@ main {
   margin-left: 10px;
   border-radius: 10px;
 }
-
+/* timer syles */
 .timer-component {
   background-color: #c15c5c;
   margin: 50px;
@@ -42,11 +49,13 @@ main {
 }
 
 .timer-component-count {
-  background-color: rgb(245, 103, 103);
-  margin-left: 35%;
-  margin-right: 35%;
+  background-color: rgb(247, 127, 127);
+  /* margin-left: 35%;
+  margin-right: 35%; */
+  margin: auto;
+  width: 50%;
   font-size: 40px;
-  border-radius: 10px;
+  border-radius: 100px;
 }
 .timer-component-time-selection button {
   opacity: 70%;
@@ -57,7 +66,7 @@ main {
 }
 .timer-component-actions button {
   opacity: 70%;
-  width: 6em;
+  width: 20%;
   height: 3em;
   font-family: "Fredoka", sans-serif;
   /* margin-left: 10px; */
@@ -66,7 +75,7 @@ main {
 }
 
 .timer-component-count h3 {
-  font-size: 48px;
+  font-size: 60px;
   margin: 20px 0;
 }
 
@@ -77,8 +86,8 @@ main {
 .information-component{
   background-color:whitesmoke;
   border-top: solid rgb(0, 0, 0);
-  height: 90vh;
-  margin-top: 500px;
+  /* height: 90vh; */
+  margin-top: 200px;
   text-align: center;
   padding: 30px;
 }
@@ -112,15 +121,6 @@ main {
   position: relative;
 }
 
-.account-overlay-container {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
-  text-align: center;
-  position: relative;
-}
 .close-btn{
   position: absolute;
   top: 5%;
@@ -170,6 +170,16 @@ main {
   width: 30%;
   margin: auto;
 }
+.user-account-section button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e94d31;
+  color: white;
+  cursor: pointer;
+  width: 30%;
+  margin: auto;
+}
 
 .account-form-container button:hover {
   background-color: #45a049;
@@ -183,3 +193,123 @@ main {
 .toggle-login:hover {
   text-decoration: underline;
 }
+
+/* Setting overlay */
+.timer-settings {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+  margin: auto;
+}
+.timer-settings input{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80%;
+
+  margin-bottom: 10px;
+}
+.other-settings input{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 20%;
+
+  margin-bottom: 10px;
+}
+.timer-save-btn{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  width: 30%;
+  margin: auto;
+}
+
+
+
+
+
+/* task componenet styles */
+.tasks-component {
+  /* color: whitesmoke; */
+  
+}
+.tasks-header {
+  border-bottom: solid whitesmoke;
+  color: white;
+}
+
+.add-task-field {
+  margin: 20px;
+  border: dotted whitesmoke;
+  background-color: #b35c5c;
+  border-radius: 20px;
+  text-align: center;
+
+}
+.add-task-field:hover {
+  background-color: #6e4848b6;
+}
+
+.tasks-input-form {
+  background-color: whitesmoke;
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  border-color: rgb(225, 235, 95);
+
+  border-style: solid;
+}
+
+.tasks-input-form input{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80%;
+  margin-bottom: 10px;
+}
+.tasks-input-form p{
+  margin-bottom: 0px;
+}
+
+.tasks-input-form-btn {
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+ justify-content: flex-end;
+}
+
+.tasks-input-form-btn button {
+  width: 20%;
+  margin-left: 10px;
+  height: 30px;
+}
+
+.task-items {
+  background-color: whitesmoke;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  border-color: cadetblue;
+  border-left-width: 10px;
+  border-style: solid;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+}
+
+.task-items button{
+  width: 20%;
+  margin-left: 10px;
+  
+  /* margin: auto; */
+  text-align: center;
+}
+
+

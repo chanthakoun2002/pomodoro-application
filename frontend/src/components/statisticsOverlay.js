@@ -5,13 +5,13 @@ const StatisticsOverlay = ({ onClose }) => {
 
 
     return (
-        <div className='overlay'> 
+        <section className='overlay'> 
             <div className='overlay-container'>
             <button className='close-btn' onClick={onClose}>X</button>
             <h1>Statistics</h1>
             </div>
             
-        </div>
+        </section>
 
     );
 };

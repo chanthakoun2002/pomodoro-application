@@ -11,13 +11,13 @@ const Navbar = ({openSettings}) => {
   const handleCloseOverlay = () => setIsOverlayOpen(false);
 
   return (
-    <div className="navbar-component">
+    <header className="navbar-component">
       <div className="navbar-brand">
         <h3>Andrew's Pomodoro</h3>
       </div>
 
       <div className="navbar-buttons">
-        <button onClick={() => handleOpenOverlay('statistics')}>Statistics</button>
+        {/* <button onClick={() => handleOpenOverlay('statistics')}>Statistics</button> */}
         <button onClick={openSettings}>Settings</button>
         <button onClick={() => handleOpenOverlay('account')}>Account</button>
 
@@ -26,7 +26,7 @@ const Navbar = ({openSettings}) => {
       {isOverlayOpen === 'account' && <AccountOverlay onClose={handleCloseOverlay} />}
       {isOverlayOpen === 'settings' && <SettingsOverlay onClose={handleCloseOverlay} />}
       {isOverlayOpen === 'statistics' && <StatisticsOverlay onClose={handleCloseOverlay} />}
-    </div>
+    </header>
   );
 };
 

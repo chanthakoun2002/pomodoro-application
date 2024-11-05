@@ -27,12 +27,16 @@ const AccountOverlay = ({ onClose }) => {
         console.log("hello from login");//testing
         try {
             if(isLogin) {
+                sessionStorage.removeItem('sessionTasks'); // Clean up residual data
+                sessionStorage.removeItem('sessionSettings');
+
                 const data = await loginUser({email, password});
                 console.log("login response data:", data); //test
                 sessionStorage.setItem('user', JSON.stringify(data));
                 setUserData(data);
                 setIsLoggedIn(true);
                 setError('Login Successful')
+                window.location.reload(); // refresh window for everything to load in
             } else {
                 
                 await registerUser({username, email, password});
@@ -47,12 +51,16 @@ const AccountOverlay = ({ onClose }) => {
     const handleLogout = async () => {
         try {
             //clear user data
+            sessionStorage.removeItem('sessionTasks'); // Clean up residual data
+            sessionStorage.removeItem('sessionSettings');
+
             await logoutUser();
             sessionStorage.removeItem('user');
             setIsLoggedIn(false);
-            setUsername('');
-            setEmail('');
-            setPassword('');
+            // setUsername('');
+            // setEmail('');
+            // setPassword('');
+            window.location.reload();
         } catch {
             setError('Failed to log out');
         }
@@ -61,7 +69,7 @@ const AccountOverlay = ({ onClose }) => {
 
 
     return (
-        <div className="overlay">
+        <section className="overlay">
           <div className="overlay-container">
             <button className="close-btn" onClick={onClose}>X</button>
 
@@ -92,7 +100,7 @@ const AccountOverlay = ({ onClose }) => {
               </div>
             )}
           </div>
-        </div>
+        </section>
       );
     };
 
