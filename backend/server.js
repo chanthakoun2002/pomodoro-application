@@ -27,10 +27,12 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 const sessionRoutes = require('./routes/sessionRoute');
 const settingsRoutes = require('./routes/settingRoute');
 const userRoutes = require('./routes/userRoute');
+const taskRoutes = require('./routes/taskRoute');
 
 app.use('/pomodoro/sessions', sessionRoutes);
 app.use('/pomodoro/settings', settingsRoutes);
 app.use('/pomodoro/users', userRoutes);
+app.use('/pomodoro/tasks', taskRoutes);
 
 app.get('/', (req, res) => res.send('Pomodoro Backend Running'));
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

@@ -2,7 +2,6 @@ const Session = require('../models/session');
 
 exports.createSession = async (req, res) => {
   try {
-
     // Just in case if session type is set wrong, dont log data into db
     if (!sessionType || !['Work', 'Short Break', 'Long Break'].includes(sessionType)) {
         return res.status(400).json({ message: 'Invalid session type.' });
