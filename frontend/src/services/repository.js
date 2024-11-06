@@ -1,4 +1,4 @@
-const API_BASE_URL="http://localhost:5000/pomodoro";
+const API_BASE_URL="https://andrews-pomodoro-app-60b015b2200a.herokuapp.com/pomodoro";
 
 
 // The code here provides the service layer/functionality to connect to the api backend
