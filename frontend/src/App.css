@@ -8,12 +8,24 @@ body {
   color: black; 
 }
 
-main {
+/* main {
   flex: 1;
-  max-width: 40rem;
+  max-width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
+} */
+
+ main {
+  margin: 0;
+  font-family: "Fredoka", sans-serif;
+  padding: 0;
+  background-color:#ba4949;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 button {
  font-size: 14px;
 }
@@ -25,6 +37,7 @@ button {
   border-bottom: thick double whitesmoke;
   width: 40rem;
   margin: auto;
+  
 }
 .navbar-component h3{
   color: whitesmoke;
@@ -33,19 +46,22 @@ button {
 .navbar-buttons button{
   opacity: 70%;
   width: 6em;
-  height: 2em;
+  /* height: 2em; */
   font-family: "Fredoka", sans-serif;
   margin-left: 10px;
   border-radius: 10px;
+  font-size: 14px;
+  padding: 8px 12px;
+  width: auto;
 }
 /* timer syles */
 .timer-component {
   background-color: #c15c5c;
   margin: 50px;
-  height: 400px;
   border-radius: 10px;
   text-align: center;
   padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .timer-component-count {
@@ -63,6 +79,8 @@ button {
   margin: 0 2px;
   height: 3em;
   font-family: "Fredoka", sans-serif;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .timer-component-actions button {
   opacity: 70%;
@@ -83,15 +101,6 @@ button {
   margin: 5px;
 }
 
-.information-component{
-  background-color:whitesmoke;
-  border-top: solid rgb(0, 0, 0);
-  /* height: 90vh; */
-  margin-top: 200px;
-  text-align: center;
-  padding: 30px;
-}
-
 
 /* Overlay models */
 .overlay {
@@ -102,11 +111,11 @@ button {
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
   z-index: 1000;
   overflow: hidden;
-  padding: 10px;
+  
 }
 .overlay h1{
   text-decoration: underline;
@@ -351,4 +360,75 @@ button {
   background-color: #4CAF50;
 }
 
+.information-component{
+  background-color:whitesmoke;
+  border-top: solid rgb(0, 0, 0);
+  /* height: 90vh; */
+  margin-top: 200px;
+  text-align: center;
+  padding: 30px;
+}
 
+
+footer {
+  text-align: center;
+  padding: 10px 10;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  background-color: #333;
+  color: #eee;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-links a{ 
+  padding-bottom: 15px;
+  font-size: 19px;
+  color: #eee;
+
+}
+.social-links a:hover{ 
+
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .navbar-component {
+    /* flex-direction: row;
+    align-items:center; */
+    width: 100%;
+  }
+
+  .timer-component-time-selection button,
+  .timer-component-actions button {
+    width: 35%;
+  }
+
+  .information-component {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-buttons button {
+    font-size: 12px;
+    /* padding: 6px 8px; */
+    width: 40%;
+    margin-top: 4px;
+  }
+
+  .timer-component {
+    padding: 20px 10px;
+  }
+
+  .timer-component-count h3 {
+    /* font-size: 1.5rem; */
+  }
+
+  .tasks-input-form-btn button {
+    width: 45%;
+  }
+
+  .timer-save-btn, .timer-reset-btn {
+    font-size: 12px;
+  }
+}

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Pomodoro from './components/pomodoroApp';
 import Navbar from './components/navbar';
 import Information from './components/information'; 
+import Footer from './components/footer'; 
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           />  
         </main>
         <Information/>
+        <Footer/>
       </div>
     </Router>
   );

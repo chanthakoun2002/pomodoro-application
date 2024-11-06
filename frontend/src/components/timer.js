@@ -112,7 +112,7 @@ const Timer = ({settings,onPomodoroCount}) => {
   return (
     <section className="timer-component">
         <div className='timer-component-time-selection'>
-            <button onClick={() => handleModeChange('pomodoro')}>Pomodoro</button>
+            <button onClick={() => handleModeChange('pomodoro')}>Pomodoro Timer</button>
             <button onClick={() => handleModeChange('Short Break')}>Short Break</button>
             <button onClick={() => handleModeChange('Long Break')}>Long Break</button>
         </div>
