@@ -227,6 +227,17 @@ button {
   width: 30%;
   margin: auto;
 }
+.timer-reset-btn{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4ca8af;
+  color: white;
+  cursor: pointer;
+  width: 30%;
+  margin-left: 10px;
+  /* margin: auto; */
+}
 
 
 
@@ -283,12 +294,23 @@ button {
   margin-top: 20px;
   display: flex;
  justify-content: flex-end;
+ 
 }
 
 .tasks-input-form-btn button {
-  width: 20%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  width: 25%;
   margin-left: 10px;
-  height: 30px;
+}
+.form-add-btn{
+  background-color: #4CAF50;
+}
+.form-cancel-btn{
+  background-color: #db4444;
 }
 
 .task-items {
@@ -299,17 +321,34 @@ button {
   border-color: cadetblue;
   border-left-width: 10px;
   border-style: solid;
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
 }
-
-.task-items button{
-  width: 20%;
+.task-items p {
+  margin-left: 20px;
+  font-size: 18px;
+}
+.task-items h1 {
+  margin-left: 20px;
+  font-style: oblique;
+}
+.task-item-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+.task-item-buttons button{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  width: 30%;
   margin-left: 10px;
-  
-  /* margin: auto; */
-  text-align: center;
+
+}
+.task-delete-btn{
+  background-color: #db4444;
+}
+.task-select-btn{
+  background-color: #4CAF50;
 }
 
 

@@ -8,6 +8,8 @@ const Timer = ({settings,onPomodoroCount}) => {
   const [completedSessions, setCompletedSessions] = useState(0); //track how many regular session before a long break
   const autoSwitch = true; //this is temporary| that was a lie...
 
+  const notificationSound = new Audio('/simple-notification-152054.mp3');
+
   useEffect(() => { // Runs when settings or mode changes
     switch (mode) {
       case 'pomodoro':
@@ -24,40 +26,34 @@ const Timer = ({settings,onPomodoroCount}) => {
     }
   }, [settings, mode]);
 
+  const notification = () => {
+    if (settings.sound) {
+      notificationSound.play().catch(error => console.log('notification sound failed:', error))
+    }else {
+      alert('Timer Finished')
+    }
+  }
+
   const handleModeChange = (newMode) => {
     setMode(newMode);
     setIsActive(false);
   };
 
-  //handles mode changes
-  // const handleModeChange = (mode) => {
-  //   if (mode === 'pomodoro') setTime(settings.workDuration * 60);
-  //   if (mode === 'shortBreak') setTime(settings.shortBreakDuration * 60);
-  //   if (mode === 'longBreak') setTime(settings.longBreakDuration *60);
-  //   setIsActive(false);
-  // };
-  // useEffect(() => {
-  //   let interval = null;
-  //   if (isActive && time > 0) {
-  //     interval = setInterval(() => setTime((prevTime) => prevTime - 1), 1000);
-  //   } else if (!isActive && time !== 0) {
-  //     clearInterval(interval);
-  //   }
-  //   return () => clearInterval(interval);
-  // }, [isActive, time]);
-
   useEffect(() => {
     let interval = null;
     if (isActive && time > 0) {
       interval = setInterval(() => setTime((prevTime) => prevTime - 1), 1000);
+      
     } else if (isActive && time === 0) {
       setIsActive(false);
-      onPomodoroCount();
+      
+      notification();
        
       if (autoSwitch) { 
         switch (mode) {
           case 'pomodoro':
             // increment work session count
+            onPomodoroCount(); //count for tasks
             setCompletedSessions((prevCount) => prevCount + 1);
             console.log("Session completed: " + completedSessions);//for debugging
             if (completedSessions + 1 >= settings.sessionsBeforeLongBreak) {
@@ -110,6 +106,7 @@ const Timer = ({settings,onPomodoroCount}) => {
     // Skips time and goes to next expected timer mode
     setTime(0);
     setIsActive(true);
+    
   }
 
   return (

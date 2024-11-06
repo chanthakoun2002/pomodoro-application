@@ -95,12 +95,15 @@ const Tasks = ({tasks, onAddTask, onDeleteTask, onSelectTask, activeTaskId, curr
                 {sortedTasks.map((task) => (
                 <div key={task._id} className="task-items">
                     <h1> {task._id === activeTaskId ? 'Current Task' : ''}</h1>
-                    <p>{task.taskName}</p>
-                    <p> {task.currentPomodoroCount || 0} / {task.pomodoroCount}</p>
-                    <button onClick={() => onDeleteTask(task._id)}>Delete</button>
-                    <button onClick={() => onSelectTask(task._id)}>
-                        {task._id === activeTaskId ? 'Unselect' : 'Select'}
-                    </button>
+                    <p>Task: {task.taskName}</p>
+                    <p>Pomodoros: {task.currentPomodoroCount || 0} / {task.pomodoroCount}</p>
+                    <div className='task-item-buttons'>
+                        <button className='task-delete-btn' onClick={() => onDeleteTask(task._id)}>Delete</button>
+                        <button className='task-select-btn' onClick={() => onSelectTask(task._id)}>
+                            {task._id === activeTaskId ? 'Unselect' : 'Select'}
+                        </button>
+                    </div>
+                    
                 </div>))}
             </div>
 
@@ -111,8 +114,8 @@ const Tasks = ({tasks, onAddTask, onDeleteTask, onSelectTask, activeTaskId, curr
                     <p>Estimated Pomodoro's</p> 
                     <input type='number' placeholder='1' min={1} max={100} value={pomodoroCount} onChange={(e) => setPomodoroCount(Number(e.target.value))} required/>
                     <div className='tasks-input-form-btn'>
-                        <button type="submit">Add</button>
-                        <button type="button" onClick={() => setAddingTasks(false)}>Cancel</button>  
+                        <button className='form-add-btn'type="submit">Add</button>
+                        <button className='form-cancel-btn' type="button" onClick={() => setAddingTasks(false)}>Cancel</button>  
                     </div>
                 </form>
             ) : (

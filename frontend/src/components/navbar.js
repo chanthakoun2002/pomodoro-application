@@ -24,7 +24,7 @@ const Navbar = ({openSettings}) => {
       </div>
 
       {isOverlayOpen === 'account' && <AccountOverlay onClose={handleCloseOverlay} />}
-      {isOverlayOpen === 'settings' && <SettingsOverlay onClose={handleCloseOverlay} />}
+      {/* {isOverlayOpen === 'settings' && <SettingsOverlay onClose={handleCloseOverlay} />} */}
       {isOverlayOpen === 'statistics' && <StatisticsOverlay onClose={handleCloseOverlay} />}
     </header>
   );

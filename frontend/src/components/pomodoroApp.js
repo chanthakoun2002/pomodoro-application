@@ -56,6 +56,13 @@ const PomodoroApp = ({showSettings, closeSettings}) => {
       }
     };
 
+    const resetSettings = () => {
+      setSettings(DEFAULT_SETTINGS);
+      setTempSettings(DEFAULT_SETTINGS);
+      sessionStorage.setItem('sessionSettings', JSON.stringify(DEFAULT_SETTINGS));
+      console.log('settings reset');
+    }
+
     //for updating setting even if user is not logged in during user sessions
     const handleTempSettingsChange = (newSettings) => {
       setTempSettings(newSettings);
@@ -167,7 +174,9 @@ const PomodoroApp = ({showSettings, closeSettings}) => {
          activeTaskId={activeTaskId} currentPomodoroCount={currentPomodoroCount}
          />
         {showSettings && (
-          <SettingsOverlay settings={settings} onClose={closeSettings}onSave={handleSaveSettings} onTempChange={handleTempSettingsChange} />
+          <SettingsOverlay settings={settings} onClose={closeSettings} onReset={resetSettings} 
+          onSave={handleSaveSettings} onTempChange={handleTempSettingsChange} 
+          />
         )}
       </section>
     );
