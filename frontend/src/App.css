@@ -421,7 +421,10 @@ footer {
   }
 
   .timer-component-count h3 {
-    /* font-size: 1.5rem; */
+    font-size: 50px;
+  }
+  .timer-component-count {
+    width: 60%;
   }
 
   .tasks-input-form-btn button {
