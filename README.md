@@ -1,4 +1,4 @@
-# pomodoro-app
+# Pomodorop Timer
  
-### [pomodoro app link](https://pomodoro-application-omega.vercel.app/)
+### [Andrews Pomodro TImer link](https://pomodoro-application-omega.vercel.app/)
 ### or https://pomodoro-application-omega.vercel.app/
