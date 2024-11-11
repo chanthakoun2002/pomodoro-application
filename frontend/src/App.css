@@ -197,27 +197,41 @@ button {
 
 /* Setting overlay */
 .timer-settings {
-  display: flex;
-  /* flex-direction: column; */
   gap: 10px;
-  margin: auto;
+  margin-bottom: 20px;
 }
-.timer-settings input{
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 80%;
 
-  margin-bottom: 10px;
+.timer-settings-field{
+  margin: 10px;
+  /* border-style: dotted; */
+  border-bottom-style:solid;
 }
-.other-settings input{
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 20%;
 
-  margin-bottom: 10px;
+.timer-settings-field p{
+  margin-bottom: 0;
+  margin-top: 3px;
 }
+
+.timer-settings-field span{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.timer-settings-field label{
+  margin: 10px;
+}
+
+.timer-settings-field button{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color:cadetblue;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  margin: 5px;
+}
+
 .timer-save-btn{
   padding: 10px;
   border: none;
@@ -227,7 +241,8 @@ button {
   cursor: pointer;
   width: 30%;
   margin: auto;
-}
+} 
+
 .timer-reset-btn{
   padding: 10px;
   border: none;
@@ -237,18 +252,9 @@ button {
   cursor: pointer;
   width: 30%;
   margin-left: 10px;
-  /* margin: auto; */
 }
 
-
-
-
-
-/* task componenet styles */
-.tasks-component {
-  /* color: whitesmoke; */
-  
-}
+/* task component styles */
 .tasks-header {
   border-bottom: solid whitesmoke;
   color: white;
@@ -274,15 +280,30 @@ button {
   border-radius: 5px;
   padding: 10px;
   border-color: rgb(225, 235, 95);
-
+  
   border-style: solid;
+}
+.tasks-input-form-pomodoro-btn span{
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+}
+.tasks-input-form-pomodoro-btn button{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color:cadetblue;
+  color: white;
+  cursor: pointer;
+  width: 38px;
+  margin: 5px;
 }
 
 .tasks-input-form input{
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  width: 80%;
+  width: 90%;
   margin-bottom: 10px;
 }
 .tasks-input-form p{

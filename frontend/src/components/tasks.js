@@ -1,15 +1,9 @@
-import React, { useState, useEffect} from 'react';
-//import { getTasks, createTask, deleteTask } from '../services/repository';
+import React, { useState} from 'react';
 
 const Tasks = ({tasks, onAddTask, onDeleteTask, onSelectTask, activeTaskId, currentPomodoroCount}) => {
     const [addingTasks, setAddingTasks] = useState(false);
-    //const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
     const [pomodoroCount, setPomodoroCount] = useState(1);
-
-    // useEffect(() => {
-    //     fetchTasks();
-    // }, []);
 
     const addTask = (e) => {
         e.preventDefault();
@@ -21,69 +15,24 @@ const Tasks = ({tasks, onAddTask, onDeleteTask, onSelectTask, activeTaskId, curr
         }
     };
 
-    //get task from db if logged in if not get from last session
-    // const fetchTasks = async () => {
-    //     const token = sessionStorage.getItem('authToken');
-    //     if (token) {
-    //         try {
-    //             const savedTasks = await getTasks(token);
-    //             setTasks(savedTasks);
-    //         } catch (error) {
-    //             console.error('Error fetching tasks:', error);
-    //         }
-    //     } else {
-    //         const sessionTasks = JSON.parse(sessionStorage.getItem('sessionTasks')) || [];
-    //         setTasks(sessionTasks);
-    //     }
-    // };
-
-    // const handleAddTask = async (e) => {
-    //     const token = sessionStorage.getItem('authToken');
-    //     e.preventDefault();
-    //     if (newTask.trim()) {
-    //         const task = { taskName: newTask, pomodoroCount };
-    //         if (token) {
-    //             try {
-    //                 const savedTask = await createTask(task, token);
-    //                 setTasks((prevTasks) => [...prevTasks, savedTask]);
-    //             } catch (error) {
-    //                 console.error('Error adding task:', error);
-    //             }
-    //         } else {
-    //             // Save to sessionStorage if not logged in
-    //             const updatedTasks = [...tasks, task];
-    //             setTasks(updatedTasks);
-    //             sessionStorage.setItem('sessionTasks', JSON.stringify(updatedTasks));
-    //         }
-    //         setNewTask('');
-    //         setPomodoroCount(1);
-    //         setAddingTasks(false);
-    //     }
-    // };
-
-
-    // const handleDeleteTask = async (index) => {
-    //     const taskToBeDeleted = tasks[index];
-    //     const token = sessionStorage.getItem('authToken');
-    //     if (token) {
-            // try {
-            //     await deleteTask(taskToBeDeleted._id, token);
-            //     setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
-            // } catch (error) {
-            //     console.error('Error deleting task:', error);
-            // }
-    //     } else {
-    //         const updatedTasks = tasks.filter((_, i) => i !== index);
-    //         setTasks(updatedTasks);
-    //         sessionStorage.setItem('sessionTasks', JSON.stringify(updatedTasks));
-    //     }
-    // };
-
     const sortedTasks = tasks.slice().sort((a, b) => {
         if (a._id === activeTaskId) return -1;  // Move active task to top
         if (b._id === activeTaskId) return 1;
         return 0;
     });
+
+    const handleTaskForm = () => {
+        setAddingTasks(true);
+        setPomodoroCount(1);
+    }
+
+    const removeVal = () => {
+        setPomodoroCount(prevCount => Math.max(prevCount - 1, 1));
+    }
+    const addVal = () => {
+        
+        setPomodoroCount(prevCount => Math.min(prevCount + 1, 100));
+    }
 
     return (
         <section className='tasks-component'>
@@ -97,6 +46,7 @@ const Tasks = ({tasks, onAddTask, onDeleteTask, onSelectTask, activeTaskId, curr
                     <h1> {task._id === activeTaskId ? 'Current Task' : ''}</h1>
                     <p>Task: {task.taskName}</p>
                     <p>Pomodoros: {task.currentPomodoroCount || 0} / {task.pomodoroCount}</p>
+                    
                     <div className='task-item-buttons'>
                         <button className='task-delete-btn' onClick={() => onDeleteTask(task._id)}>Delete</button>
                         <button className='task-select-btn' onClick={() => onSelectTask(task._id)}>
@@ -112,21 +62,25 @@ const Tasks = ({tasks, onAddTask, onDeleteTask, onSelectTask, activeTaskId, curr
                     <p>Task Name</p> 
                     <input type='text' placeholder='Enter Task Name' value={newTask} onChange={(e) => setNewTask(e.target.value)} required/> 
                     <p>Estimated Pomodoro's</p> 
-                    <input type='number' placeholder='1' min={1} max={100} value={pomodoroCount} onChange={(e) => setPomodoroCount(Number(e.target.value))} required/>
+                    <div className='tasks-input-form-pomodoro-btn'>
+                        <button type="button" onClick={removeVal}>-</button>
+                        <span>{pomodoroCount}</span>
+                        <button type="button" onClick={addVal}>+</button> 
+                    </div>
+                    
+                    {/* <input type='number' placeholder='1' min={1} max={100} value={pomodoroCount} onChange={(e) => setPomodoroCount(Number(e.target.value))} required/> */}
                     <div className='tasks-input-form-btn'>
                         <button className='form-add-btn'type="submit">Add</button>
                         <button className='form-cancel-btn' type="button" onClick={() => setAddingTasks(false)}>Cancel</button>  
                     </div>
                 </form>
             ) : (
-                <div className='add-task-field' onClick={() => setAddingTasks(true)}>
+                <div className='add-task-field' onClick={handleTaskForm}>
                     <h1>+ Add Task +</h1>
                 </div>
             )}
-            
         </section>
     )
-
 }
 
 export default Tasks;
