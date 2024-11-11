@@ -29,6 +29,10 @@ const settingsRoutes = require('./routes/settingRoute');
 const userRoutes = require('./routes/userRoute');
 const taskRoutes = require('./routes/taskRoute');
 
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+});
+
 app.use('/pomodoro/sessions', sessionRoutes);
 app.use('/pomodoro/settings', settingsRoutes);
 app.use('/pomodoro/users', userRoutes);

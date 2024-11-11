@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const BlacklistedToken = require("../models/token");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const generateToken = (id) => { //generates jwt token
