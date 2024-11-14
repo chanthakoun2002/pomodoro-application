@@ -14,7 +14,6 @@ Or visit directly: https://pomodoro-application-omega.vercel.app/
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
 - [Screenshots](#screenshots)
 - [Future Enhancements](#future-enhancements)
 
@@ -51,5 +50,10 @@ To set up the project locally, follow these steps:
 ### Prerequisites
 Make sure you have Node.js installed on your computer.
 
+## Screenshots
 
+![Screenshot 2024-11-08 163454](https://github.com/user-attachments/assets/19366a1d-7b4d-4cbe-9fa8-69596a2758a6)
 
+![Screenshot 2024-11-08 163518](https://github.com/user-attachments/assets/7c43cfa7-1ee2-4bc9-9d41-00014dfa2361)
+
+![Screenshot 2024-11-08 163512](https://github.com/user-attachments/assets/2082e5b9-d3b3-48b2-b053-79770e4cf531)
